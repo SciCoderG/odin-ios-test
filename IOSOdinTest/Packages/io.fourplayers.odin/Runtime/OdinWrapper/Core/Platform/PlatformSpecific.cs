@@ -39,7 +39,7 @@ namespace OdinNative.Core.Platform
         private const string WindowsLibName = "odin.dll";
         private const string LinuxLibName = "libodin.so";
         private const string AppleLibName = "libodin.dylib";
-        private const string IOSLibName = "libodin.dylib";
+        private const string IOSLibName = "Odin.framework/Odin";
 
 
         private static class NativeWindowsMethods
@@ -259,11 +259,8 @@ namespace OdinNative.Core.Platform
             switch (platform)
             {
                 case SupportedPlatform.iOS:
-                    names = new string[] { AppleLibName,
-                        string.Format("{0}/{1}", UnityEngine.Application.dataPath, IOSLibName), // Data
-                        string.Format("{0}/../{1}/{2}", UnityEngine.Application.dataPath, "Frameworks", IOSLibName), // Frameworks
-                        string.Format("{0}/../{1}/{2}", UnityEngine.Application.dataPath, "PlugIns", IOSLibName), // PlugIns
-                        string.Format("{0}/../{1}/{2}", UnityEngine.Application.dataPath, "SharedSupport", IOSLibName), // SharedSupport
+                    names = new string[] { 
+                        string.Format("{0}/../{1}/{2}", UnityEngine.Application.dataPath, "Frameworks", IOSLibName),
                         string.Format("{0}/{1}/{2}", PackagePath, "macos/universal", AppleLibName), // PkgManager
                     };
                     break;
